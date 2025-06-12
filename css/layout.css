@@ -9,6 +9,8 @@ html {
   -webkit-text-size-adjust: none;
   -moz-text-size-adjust: none;
   -ms-text-size-adjust: none;
+  min-height: 100%;
+  height: 100%;
 }
 
 body {
@@ -16,25 +18,34 @@ body {
   background-color: #EDEAD4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
 }
 
-
-
+/* Ensure consistent background on mobile Safari */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #EDEAD4;
+  z-index: -1;
+}
 
 /* Main Page Layout */
-
 #main-content {
   margin: 225px 425px;
   display: flex;
   flex-direction: column;
   gap: 96px;
+  position: relative;
+  z-index: 1;
 }
 
-
-
-
 /* Portfolio Header */
-
 #portfolio-header {
   display: flex;
   gap: 20px;
@@ -60,12 +71,8 @@ body {
   flex-basis: 50%;
 }
 
-
-
-
-/* /* About Section */
-
-about-section {
+/* About Section */
+#about-section {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -75,13 +82,9 @@ about-section {
   display: flex;
   flex-direction: column;
   gap: 34px;
-} 
-
-
-
+}
 
 /* Project Section */
-
 #my-work-section {
   display: flex;
   flex-direction: column;
@@ -94,33 +97,28 @@ about-section {
   flex-wrap: wrap;
 }
 
-    /* Project Cards */
+/* Project Cards */
+.project-card {
+  max-width: calc((100% - 32px) / 3);
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
 
-    .project-card {
-      max-width: calc((100% - 32px) / 3);
-      display: flex;
-      flex-direction: column;
-      gap: 34px;
-    }
+.project-card-text-container {
+  flex-direction: column;
+  display: flex;
+  gap: 16px;
+}
 
-    .project-card-text-container {
-      flex-direction: column;
-      display: flex;
-      gap: 16px
-    }
-
-    .project-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      object-position: center;
-    }
-
-
-
+.project-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
 
 /* Project Pages */
-
 #project-header {
   display: flex;
   flex-direction: column;
@@ -144,36 +142,34 @@ about-section {
   gap: 34px;
 }
 
-    /* Project Gallery */
+/* Project Gallery */
+#project-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-    #project-gallery {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+.project-gallery-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 34px 16px;
+}
 
-    .project-gallery-content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 34px 16px;
-    }
+.gallery-image-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-    .gallery-image-container {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+.gallery-image-container.half-width {
+  width: calc((100% - 16px) / 2);
+}
 
-    .gallery-image-container.half-width {
-      width: calc((100% - 16px) / 2);
-    }
-
-    .gallery-image {
-      width: 100%;
-      height: auto;
-    }
-
+.gallery-image {
+  width: 100%;
+  height: auto;
+}
 
 /* Extra Extra large devices (large laptops and desktops, 1200px and below) */
 @media only screen and (max-width: 1600px) {
@@ -209,6 +205,13 @@ about-section {
   .project-card {
     max-width: calc((100% - 16px) / 2);
   }
+
+  /* Enhanced mobile background consistency */
+  html,
+  body {
+    background-color: #EDEAD4 !important;
+    min-height: 100vh;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and below) */
@@ -220,7 +223,17 @@ about-section {
   .project-card {
     max-width: 100%;
   }
+
+  /* Mobile Safari specific fixes */
+  html {
+    background-color: #EDEAD4 !important;
+    -webkit-background-size: cover;
+    background-attachment: fixed;
+  }
+
+  body {
+    background-color: #EDEAD4 !important;
+    -webkit-background-size: cover;
+    background-attachment: fixed;
+  }
 }
-
-
-
