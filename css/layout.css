@@ -60,9 +60,9 @@ body {
 
 
 
-/* About Section */
+/* /* About Section */
 
-#about-section {
+about-section {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -72,7 +72,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 34px;
-}
+} 
 
 
 
