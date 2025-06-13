@@ -205,7 +205,6 @@ body::before {
   /* Enhanced mobile background consistency */
   html,
   body {
-    background-color: #EDEAD4 !important;
     min-height: 100vh;
   }
 }
@@ -222,13 +221,11 @@ body::before {
 
   /* Mobile Safari specific fixes */
   html {
-    background-color: #EDEAD4 !important;
     -webkit-background-size: cover;
     background-attachment: fixed;
   }
 
   body {
-    background-color: #EDEAD4 !important;
     -webkit-background-size: cover;
     background-attachment: fixed;
   }
